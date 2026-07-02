@@ -1,101 +1,553 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import {
+  Sparkles,
+  MessageCircle,
+  Shirt,
+  Truck,
+  Clock3,
+  ArrowRight,
+} from "lucide-react"
+
+import { motion } from "framer-motion"
+
+import { Button } from "@/components/ui/button"
+
+import ChatbotWidget from "@/components/chatbot/chatbot-widget"
+
+
+import PromoSection
+from "@/components/home/promo-section"
+
+import NewsSection
+from "@/components/home/news-section"
+import Image from 'next/image'
+
+
+export default function HomePage() {
+
+  const openChatbot = () => {
+
+    const button =
+      document.querySelector(
+        "#chatbot-trigger",
+      ) as HTMLButtonElement
+
+    button?.click()
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main
+      className="
+        min-h-screen
+        bg-gradient-to-br
+        from-emerald-50
+        via-white
+        to-teal-50
+      "
+    >
+
+  
+
+      {/* NAVBAR */}
+      <nav
+        className="
+          sticky
+          top-0
+          z-50
+          flex
+          items-center
+          justify-between
+          px-6
+          lg:px-20
+          py-5
+          border-b
+          bg-white/70
+          backdrop-blur-md
+        "
+      >
+
+        <div className="flex items-center gap-3">
+
+          <img
+            src="/images/logo.sinari.jpeg"
+            alt="SINARI"
+            className="
+              h-11
+              w-11
+              rounded-full
+              object-cover
+              border
+              shadow
+            "
+          />
+
+          <div>
+
+            <h1
+              className="
+                font-bold
+                text-lg
+                text-gray-900
+              "
+            >
+              SINARIBOTS
+            </h1>
+
+            <p
+              className="
+                text-xs
+                text-gray-500
+              "
+            >
+              AI Laundry Assistant
+            </p>
+
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <Button
+  onClick={openChatbot}
+  className="
+  bg-yellow-400
+  hover:bg-yellow-500
+  text-black
+  font-semibold
+  gap-2
+"
+>
+  <MessageCircle className="h-4 w-4" />
+  Mulai Chat
+</Button>
+
+      </nav>
+
+      {/* HERO */}
+      <section
+        className="
+          px-6
+          lg:px-20
+          py-24
+        "
+      >
+
+        <div
+          className="
+            grid
+            lg:grid-cols-2
+            gap-12
+            items-center
+          "
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+          {/* LEFT */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+
+            transition={{
+              duration: 0.6,
+            }}
+
+            className="space-y-8"
+          >
+
+            <div
+              className="
+                inline-flex
+                items-center
+                gap-2
+                bg-yellow-100
+                text-yellow-700
+                px-4
+                py-2
+                rounded-full
+                text-sm
+                font-medium
+              "
+            >
+
+              <Sparkles className="h-4 w-4" />
+
+              AI Powered Laundry
+
+            </div>
+
+            <div className="space-y-5">
+
+              <h1
+                className="
+                  text-5xl
+                  lg:text-6xl
+                  font-black
+                  leading-tight
+                  text-gray-900
+                "
+              >
+                Laundry Modern
+                dengan
+
+                <span className="text-yellow-500">
+                  {" "}AI Assistant
+                </span>
+
+              </h1>
+
+              <p
+                className="
+                  text-lg
+                  text-gray-600
+                  leading-relaxed
+                  max-w-xl
+                "
+              >
+                SINARIBOTS membantu pelanggan
+                laundry mendapatkan layanan cepat,
+                otomatis, dan responsif berbasis AI.
+              </p>
+
+            </div>
+
+            <div className="flex">
+
+  <Button
+  size="lg"
+  className="
+    bg-emerald-600
+    hover:bg-emerald-700
+    text-white
+    gap-2
+    font-semibold
+  "
+  onClick={() => {
+    document
+      .getElementById("services")
+      ?.scrollIntoView({
+        behavior: "smooth",
+      })
+  }}
+>
+  Lihat Layanan
+  <ArrowRight className="h-5 w-5" />
+</Button>
+
+</div>
+
+          </motion.div>
+
+          {/* RIGHT CARD */}
+          <motion.div
+
+            initial={{
+              opacity: 0,
+              scale: 0.9,
+            }}
+
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+
+            transition={{
+              duration: 0.7,
+            }}
+
+            className="relative"
+          >
+
+            <div
+              className="
+                bg-white
+                rounded-3xl
+                shadow-2xl
+                p-8
+                border
+              "
+            >
+
+              <div className="space-y-6">
+
+                {/* CARD 1 */}
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-4
+                    p-4
+                    rounded-2xl
+                    bg-yellow-50
+                  "
+                >
+
+                  <div
+                    className="
+                      p-3
+                      rounded-xl
+                      bg-yellow-400
+                      text-black
+                    "
+                  >
+                    <Shirt className="h-6 w-6" />
+                  </div>
+
+                  <div>
+
+                    <h3 className="font-semibold">
+                      Cuci Kiloan
+                    </h3>
+
+                    <p className="text-sm text-gray-500">
+                      Cepat & bersih
+                    </p>
+
+                  </div>
+
+                </div>
+
+                {/* CARD 2 */}
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-4
+                    p-4
+                    rounded-2xl
+                    bg-emerald-50
+                  "
+                >
+
+                  <div
+                    className="
+                      p-3
+                      rounded-xl
+                      bg-emerald-600
+                      text-white
+                    "
+                  >
+                    <Truck className="h-6 w-6" />
+                  </div>
+
+                  <div>
+
+                    <h3 className="font-semibold">
+                      Antar Jemput
+                    </h3>
+
+                    <p className="text-sm text-gray-500">
+                      Praktis tanpa keluar rumah
+                    </p>
+
+                  </div>
+
+                </div>
+
+                {/* CARD 3 */}
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-4
+                    p-4
+                    rounded-2xl
+                    bg-orange-50
+                  "
+                >
+
+                  <div
+                    className="
+                      p-3
+                      rounded-xl
+                      bg-orange-500
+                      text-white
+                    "
+                  >
+                    <Clock3 className="h-6 w-6" />
+                  </div>
+
+                  <div>
+
+                    <h3 className="font-semibold">
+                      Express Service
+                    </h3>
+
+                    <p className="text-sm text-gray-500">
+                      Selesai lebih cepat
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </motion.div>
+
+        </div>
+
+      </section>
+
+      {/* PROMO */}
+      <PromoSection />
+
+      {/* NEWS */}
+      <NewsSection />
+
+      {/* SERVICES */}
+      <section
+        id="services"
+        className="
+          px-6
+          lg:px-20
+          py-20
+        "
+      >
+
+        <div
+          className="
+            text-center
+            space-y-4
+            mb-14
+          "
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+          <div
+            className="
+              inline-flex
+              items-center
+              gap-2
+              bg-yellow-100
+              text-yellow-700
+              px-4
+              py-2
+              rounded-full
+              text-sm
+              font-medium
+            "
+          >
+            Layanan Kami
+          </div>
+
+          <h2
+            className="
+              text-4xl
+              font-black
+              text-gray-900
+            "
+          >
+            Solusi Laundry Modern
+          </h2>
+
+    <p
+      className="
+        text-gray-600
+        leading-relaxed
+        max-w-2xl
+        mx-auto
+      "
+    >
+      SINARIBOTS menyediakan layanan laundry cepat, modern, dan terintegrasi AI assistant.
+    </p>
+
+  </div>
+
+  <div
+    className="
+      grid
+      grid-cols-1
+      md:grid-cols-2
+      lg:grid-cols-4
+      gap-6
+    "
+  >
+
+    {[
+      {
+        title: 'Self Service',
+        icon: '🧺',
+        desc:
+          'Cuci dan dryer mandiri dengan mesin modern cepat dan praktis.',
+      },
+
+      {
+        title: 'Cuci Kiloan',
+        icon: '👕',
+        desc:
+          'Layanan cuci lipat dan cuci setrika untuk kebutuhan laundry harian.',
+      },
+
+      {
+        title: 'Setrika Saja',
+        icon: '🔥',
+        desc:
+          'Pakaian dirapikan dan disetrika harum tanpa proses pencucian.',
+      },
+
+      {
+        title: 'Laundry Satuan',
+        icon: '🧸',
+        desc:
+          'Cuci sepatu, karpet, boneka, helm, bed cover, dan pakaian premium.',
+      },
+    ].map((service, index) => (
+
+      <div
+        key={index}
+        className="
+          bg-white
+          rounded-3xl
+          p-8
+          border
+          hover:shadow-xl
+          transition-all
+          duration-300
+          hover:-translate-y-1
+        "
+      >
+
+        <div className="text-5xl mb-5">
+          {service.icon}
+        </div>
+
+        <h3
+          className="
+            text-2xl
+            font-bold
+            mb-3
+            text-gray-900
+          "
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+          {service.title}
+        </h3>
+
+        <p
+          className="
+            text-gray-600
+            leading-relaxed
+          "
+        >
+          {service.desc}
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
+      {/* CHATBOT */}
+      <ChatbotWidget />
+
+    </main>
+  )
 }
