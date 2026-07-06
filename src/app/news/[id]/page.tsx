@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import axios from 'axios'
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"

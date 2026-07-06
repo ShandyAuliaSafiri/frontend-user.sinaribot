@@ -8,12 +8,12 @@ import {
 import {
   newsService,
 } from "@/services/news.service"
+import type { News } from "@/types/news"
 
 export default function AnnouncementBar() {
 
-  const [announcement,
-    setAnnouncement] =
-    useState<any>(null)
+  const [announcement, setAnnouncement] =
+  useState<News | null>(null)
 
   useEffect(() => {
     fetchAnnouncement()
@@ -34,9 +34,7 @@ export default function AnnouncementBar() {
               "ANNOUNCEMENT",
           )
 
-        setAnnouncement(
-          latest,
-        )
+        setAnnouncement(latest ?? null)
 
       } catch (error) {
         console.error(error)

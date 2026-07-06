@@ -4,9 +4,10 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { newsService } from "@/services/news.service"
+import type { News } from "@/types/news"
 
 export default function PromoSection() {
-  const [promos, setPromos] = useState<any[]>([])
+ const [promos, setPromos] = useState<News[]>([])
 
   useEffect(() => {
     fetchPromos()

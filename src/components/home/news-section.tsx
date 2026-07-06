@@ -20,15 +20,12 @@ import {
   newsService,
 } from "@/services/news.service"
 
-import {
-  Button,
-} from "@/components/ui/button"
+import type { News } from "@/types/news"
 
 export default function NewsSection() {
 
-  const [news,
-    setNews] =
-    useState<any[]>([])
+ const [news, setNews] =
+  useState<News[]>([])
 
   const [loading,
     setLoading] =

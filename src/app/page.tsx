@@ -21,7 +21,7 @@ from "@/components/home/promo-section"
 
 import NewsSection
 from "@/components/home/news-section"
-import Image from 'next/image'
+
 
 
 export default function HomePage() {

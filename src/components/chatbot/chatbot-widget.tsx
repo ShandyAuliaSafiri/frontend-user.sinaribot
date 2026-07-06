@@ -11,7 +11,6 @@ import {
   Send,
   X,
   Sparkles,
-  Bot,
   Trash2,
 } from 'lucide-react'
 
@@ -20,9 +19,6 @@ import {
   AnimatePresence,
 } from 'framer-motion'
 
-import {
-  chatService,
-} from '@/services/chat.service'
 
 import {
   Button,
@@ -234,16 +230,20 @@ if (
       setTimeout(() => {
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
       }, 100)
-    } catch (error: any) {
+ } catch (error: unknown) {
   console.error("CHATBOT ERROR:", error)
-  console.error("RESPONSE:", error?.response?.data)
+
+  let message = "❌ Network error. Coba lagi nanti ya."
+
+  if (axios.isAxiosError(error)) {
+    message =
+      error.response?.data?.message ??
+      error.message
+  }
 
   const botMsg: Message = {
     sender: "bot",
-    text:
-      error?.response?.data?.message ||
-      error?.message ||
-      "❌ Network error. Coba lagi nanti ya.",
+    text: message,
     time: new Date().toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -252,9 +252,8 @@ if (
 
   setMessages((prev) => [...prev, botMsg])
 } finally {
-      setLoading(false)
-    }
-  }
+  setLoading(false)
+} }
 
   return (
     <>
