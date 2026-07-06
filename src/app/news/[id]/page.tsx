@@ -15,7 +15,7 @@ async function getNews(id: string) {
 
     const res =
       await axios.get(
-        `http://localhost:3000/news/${id}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/news/${id}`,
       )
 
     return res.data
@@ -89,7 +89,7 @@ export default async function NewsDetailPage({
           <div className="relative w-full h-[400px]">
 
             <img
-  src={`http://localhost:3000/${news.imageUrl.replace(/^\/+/, '')}`}
+  src={`${process.env.NEXT_PUBLIC_API_URL}/${news.imageUrl.replace(/^\/+/, '')}`}  
   alt={news.title}
   className="w-full h-full object-cover"
 />

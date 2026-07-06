@@ -61,7 +61,7 @@ export default function PromoSection() {
               >
                 {promo.imageUrl && (
                   <img
-                    src={`http://localhost:3000${promo.imageUrl}`}
+                   src={`${process.env.NEXT_PUBLIC_API_URL}${promo.imageUrl}`}
                     alt={promo.title}
                     className="
                       h-52

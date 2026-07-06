@@ -233,7 +233,7 @@ export default function NewsSection() {
                     <img
                       src={
                         item.imageUrl
-                          ? `http://localhost:3000${item.imageUrl}`
+                          ?`${process.env.NEXT_PUBLIC_API_URL}${item.imageUrl}`
                           : "https://placehold.co/600x400"
                       }
 
